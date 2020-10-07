@@ -8,6 +8,46 @@ inquire.prompt([
     {
         type: "input",
         message:"What is your project title?",
-        name:"projectTitle"
-    }
+        name:"projectTitle",
+    },
+    {
+        type: "input",
+        message:"What is your project title?",
+        name:"projectTitle",
+    },
+    {
+        type: "input",
+        message:"What is your project title?",
+        name:"projectTitle",
+    },
+    {
+        type: "input",
+        message:"What is your project title?",
+        name:"projectTitle",
+    },
+    {
+        type: "input",
+        message:"What is your project title?",
+        name:"projectTitle",
+    },
+    {
+        type: "input",
+        message:"What is your project title?",
+        name:"projectTitle",
+    },
+    {
+        type: "input",
+        message:"What is your project title?",
+        name:"projectTitle",
+    },
+    {
+        type: "input",
+        message:"What is your project title?",
+        name:"projectTitle",
+    },
+    {
+        type: "input",
+        message:"What is your project title?",
+        name:"projectTitle",
+    },
 ])
