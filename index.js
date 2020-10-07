@@ -1,10 +1,12 @@
 const inquire = require ("inquirer");
 const fs = require ("fs");
 const util = require ("util");
+const { asap } = require("rxjs");
 
 const writeFileAsync = util.promisify(fs.writeFile);
 
-inquire.prompt([
+function rmQuestions(){
+    return inquire.prompt([
     {
         type: "input",
         message:"What is your project title?",
@@ -23,7 +25,7 @@ inquire.prompt([
     {
         type: "input",
         message:"What packages are needed to be install for this program?",
-        name:"installations",
+        name:"install",
     },
     {
         type: "input",
@@ -59,4 +61,56 @@ inquire.prompt([
         message:"What should the user do if they have any questions or issues?",
         name:"questions",
     }
-])
+]);
+}
+
+function generateRm(answers) {
+    return `## Title: ${answers.projectTitle}
+
+#### ************************************************************************************
+
+### Description: ${answers.description}
+
+#### ************************************************************************************
+
+### Table of Contents: ${answers.tOfContent}
+
+#### ************************************************************************************
+
+### Instalations: ${answers.install}
+
+#### ************************************************************************************
+
+### Usage: ${answers.usage}
+
+#### ************************************************************************************
+
+### License: ${answers.license}
+
+#### ************************************************************************************
+
+### Contributers: ${answers.contributers}
+
+### Tests: ${answers.test}
+
+#### ************************************************************************************
+
+### What should i do if i have any questions? ${answers.questions}
+
+#### ************************************************************************************
+`;
+  }
+  
+rmQuestions()
+.then(function(answers){
+    const readMe = generateRm (answers);
+
+    return writeFileAsync("README.md", readMe);
+})
+.then(function() {
+    console.log("Successfully wrote");
+  })
+  .catch(function(err) {
+    console.log(err);
+  });
+
