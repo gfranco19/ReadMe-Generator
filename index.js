@@ -113,7 +113,7 @@ rmQuestions()
 .then(function(answers){
     const readMe = generateRm (answers);
 
-    return writeFileAsync("README.md", readMe);
+    return writeFileAsync("readme/README.md", readMe);
 })
 .then(function() {
     console.log("Successfully wrote");
