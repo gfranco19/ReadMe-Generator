@@ -9,6 +9,11 @@ function rmQuestions(){
     return inquire.prompt([
     {
         type: "input",
+        message:"What is your git hub username?",
+        name:"gitName",
+    },
+    {
+        type: "input",
         message:"What is your project title?",
         name:"projectTitle",
     },
@@ -16,11 +21,6 @@ function rmQuestions(){
         type: "input",
         message:"Please add a discription for your project.",
         name:"description",
-    },
-    {
-        type: "input",
-        message:"Please add a table of context.",
-        name:"tOfContent",
     },
     {
         type: "input",
@@ -65,15 +65,24 @@ function rmQuestions(){
 }
 
 function generateRm(answers) {
-    return `## Title: ${answers.projectTitle}
+    return `
+![GitHub followers](https://img.shields.io/github/followers/${answers.gitName}?label=Follow&style=social)
+## Title: ${answers.projectTitle}
+
+#### ************************************************************************************
+
+### Table of Contents:
+- [Description](#description)
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+- [Contributing](#contributing)
+- [Tests](#tests)
+- [Questions](#questions)
 
 #### ************************************************************************************
 
 ### Description: ${answers.description}
-
-#### ************************************************************************************
-
-### Table of Contents: ${answers.tOfContent}
 
 #### ************************************************************************************
 
